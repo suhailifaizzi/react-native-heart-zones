@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
+  const handleCalculate = () => console.log('Handle calculate.')
+
   return (
     <View style={styles.container}>
       <Image 
@@ -13,42 +15,47 @@ export default function App() {
         <View style={styles.inputContainer}>
           <Text>Age:</Text>
           <TextInput 
-            style={styles.inputFieldContainer}
-            // placeholder='Age'
-            value={28} />
+            style={styles.inputFieldContainer} />
         </View>
         <View style={styles.inputContainer}>
           <Text>Resting Heart Rate:</Text>
           <TextInput 
-            style={styles.inputFieldContainer}
-            // placeholder='Resting Heart Rate'
-            value={28} />
+            style={styles.inputFieldContainer} />
+        </View>
+        <View
+          style={styles.buttonContainer}>
+          <Button 
+            style={styles.button}
+            onPress={handleCalculate} 
+            title="Calculate"/>
         </View>
       </View>
-      {/* <View style={styles.resultContainer}>
-        <Text>Usable Heart Rate Range:</Text>
-        <Text>54 - 194 bpm</Text>
-      </View>
       <View style={styles.resultContainer}>
-        <Text>Z1 (50%): </Text>
-        <Text>105 - 137 bpm</Text>
+        <View style={styles.resultData}>
+          <Text>Usable Heart Rate Range:</Text>
+          <Text> 54 - 194 bpm</Text>
+        </View>
+        <View style={styles.resultData}>
+          <Text>Z1 (50%): </Text>
+          <Text>105 - 137 bpm</Text>
+        </View>
+        <View style={styles.resultData}>
+          <Text>Z2 (60%): </Text>
+          <Text>138 - 150 bpm</Text>
+        </View>
+        <View style={styles.resultData}>
+          <Text>Z3 (70%): </Text>
+          <Text>151 - 168 bpm</Text>
+        </View>
+        <View style={styles.resultData}>
+          <Text>Z4 (80%): </Text>
+          <Text>169 - 175 bpm</Text>
+        </View>
+        <View style={styles.resultData}>
+          <Text>Z5 (90%): </Text>
+          <Text>176 - 194 bpm</Text>
+        </View>
       </View>
-      <View style={styles.resultContainer}>
-        <Text>Z2 (60%): </Text>
-        <Text>138 - 150 bpm</Text>
-      </View>
-      <View style={styles.resultContainer}>
-        <Text>Z3 (70%): </Text>
-        <Text>151 - 168 bpm</Text>
-      </View>
-      <View style={styles.resultContainer}>
-        <Text>Z4 (80%): </Text>
-        <Text>169 - 175 bpm</Text>
-      </View>
-      <View style={styles.inputContainer}>
-        <Text>Z5 (90%): </Text>
-        <Text>176 - 194 bpm</Text>
-      </View> */}
       <StatusBar style="auto" />
     </View>
   );
@@ -57,9 +64,20 @@ export default function App() {
 const styles = StyleSheet.create({
   bannerContainer: {
     width: '100%',
-    position: "absolute",
+    position: 'absolute',
     top: 70,
-    alignItems: "center"
+    alignItems: 'center'
+  },
+  button: {
+    borderRadius:10,
+    borderWidth: 1,
+    borderColor: '#000'
+  },
+  buttonContainer: {
+    // backgroundColor: 'gold',
+    top: 30,
+    borderWidth: 1,
+    borderColor: '#fff'
   },
   container: {
     flex: 1,
@@ -72,7 +90,8 @@ const styles = StyleSheet.create({
     top: 20,
     bottom: 20,
     flexDirection: 'row',
-    alignContent: "center",
+    alignContent: 'center',
+    // backgroundColor: 'dodgerblue',
   },
   inputFieldContainer: {
     left: 10,
@@ -83,5 +102,13 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     flexDirection: 'column',
+  },
+  resultContainer: {
+    top: 40,
+    width: '90%',
+    alignItems: 'center',
+  },
+  resultData: {
+    flexDirection: 'row',
   }
 });
